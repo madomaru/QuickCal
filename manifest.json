@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Send Selected Text with Input",
+    "version": "1.0",
+    "permissions": ["activeTab", "scripting"],
+    "commands": {
+      "send-html-for-google-calendar": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+G",
+          "mac": "Command+Shift+G"
+        },
+        "description": "Send selected text and user input"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    }
+  }
+  
