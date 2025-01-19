@@ -1,0 +1,32 @@
+.inputContainer {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .inputField {
+    width: 300px;
+    min-height: 30px;
+    resize: none;
+    overflow: hidden;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button {
+    cursor: pointer;
+  }

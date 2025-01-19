@@ -4,16 +4,25 @@
     "version": "1.0",
     "permissions": ["activeTab", "scripting"],
     "commands": {
-      "send-html-for-google-calendar": {
-        "suggested_key": {
-          "default": "Ctrl+Shift+G",
-          "mac": "Command+Shift+G"
-        },
-        "description": "Send selected text and user input"
-      }
+        "send-html-for-google-calendar": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+G",
+                "mac": "Command+Shift+G"
+            },
+            "description": "Send selected text and user input"
+        }
     },
     "background": {
-      "service_worker": "background.js"
-    }
-  }
-  
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["config.js"],
+            "matches": ["<all_urls>"]
+        },
+        {
+            "resources": ["style.css"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}

@@ -1,5 +1,19 @@
-import CONFIG from './config.js';
+const CONFIG_URL = chrome.runtime.getURL('config.js');
+
+function injectStylesheet(filename) {
+  const link = document.createElement('link');
+  link.href = chrome.runtime.getURL(filename);
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+}
+
+injectStylesheet('style.css');
+
+
 (async () => {
+    const module = await import(CONFIG_URL);
+    const CONFIG = module.default;
     // 選択範囲を取得
     const selection = window.getSelection();
     const selectedText = selection ? selection.toString().trim() : "";
@@ -14,39 +28,22 @@ import CONFIG from './config.js';
   
     // 入力ウィンドウを作成
     const inputContainer = document.createElement("div");
-    inputContainer.style.position = "fixed";
-    inputContainer.style.top = "20px";
-    inputContainer.style.left = "50%";
-    inputContainer.style.transform = "translateX(-50%)";
-    inputContainer.style.zIndex = "10000";
-    inputContainer.style.backgroundColor = "white";
-    inputContainer.style.padding = "10px";
-    inputContainer.style.border = "1px solid black";
-    inputContainer.style.boxShadow = "0px 4px 8px rgba(0, 0, 0, 0.2)";
-    inputContainer.style.borderRadius = "5px";
-    inputContainer.style.display = "flex";
-    inputContainer.style.flexDirection = "column";
-    inputContainer.style.gap = "10px";
-    inputContainer.style.alignItems = "center";
-  
+    inputContainer.className = "inputContainer"; // スタイルクラスを適用
+    
     const inputField = document.createElement("textarea");
     inputField.placeholder = "Enter additional text (optional)";
-    inputField.style.width = "300px";
-    inputField.style.minHeight = "30px";
-    inputField.style.resize = "none";
-    inputField.style.overflow = "hidden";
-  
+    inputField.className = "inputField"; // スタイルクラスを適用
+    
     const buttonContainer = document.createElement("div");
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "10px";
-  
+    buttonContainer.className = "buttonContainer"; // スタイルクラスを適用
+    
     const sendButton = document.createElement("button");
     sendButton.textContent = "Send";
-    sendButton.style.cursor = "pointer";
-  
+    sendButton.className = "button"; // スタイルクラスを適用
+    
     const cancelButton = document.createElement("button");
     cancelButton.textContent = "Cancel";
-    cancelButton.style.cursor = "pointer";
+    cancelButton.className = "button"; // スタイルクラスを適用
   
     buttonContainer.appendChild(sendButton);
     buttonContainer.appendChild(cancelButton);
